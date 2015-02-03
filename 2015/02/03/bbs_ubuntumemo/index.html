@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu筆記 | Daydream Dungeon</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="系統：Ubuntu 14.04
+
+在Ubuntu 做BottonMapping 修改檔案：/usr/share/X11/xorg.conf.d/50-vmmouse.conf 因為會是唯讀 所以要用Terminal輸入：sudo gedit來編輯 打開之後複製下面的內容取代原本的 (我用的是Kensington Expert Mouse) 最後存檔重開機 完成!
+ Section 'InputCl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu筆記">
+<meta property="og:url" content="http://fukami896.github.io/2015/02/03/bbs_ubuntumemo/">
+<meta property="og:site_name" content="Daydream Dungeon">
+<meta property="og:description" content="系統：Ubuntu 14.04
+
+在Ubuntu 做BottonMapping 修改檔案：/usr/share/X11/xorg.conf.d/50-vmmouse.conf 因為會是唯讀 所以要用Terminal輸入：sudo gedit來編輯 打開之後複製下面的內容取代原本的 (我用的是Kensington Expert Mouse) 最後存檔重開機 完成!
+ Section 'InputCl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu筆記">
+<meta name="twitter:description" content="系統：Ubuntu 14.04
+
+在Ubuntu 做BottonMapping 修改檔案：/usr/share/X11/xorg.conf.d/50-vmmouse.conf 因為會是唯讀 所以要用Terminal輸入：sudo gedit來編輯 打開之後複製下面的內容取代原本的 (我用的是Kensington Expert Mouse) 最後存檔重開機 完成!
+ Section 'InputCl">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Daydream Dungeon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://fukami896.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-bbs_ubuntumemo" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/02/03/bbs_ubuntumemo/" class="article-date">
+  <time datetime="2015-02-03T15:05:08.000Z" itemprop="datePublished">Feb 3 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">諾哥</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      Ubuntu筆記
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>系統：Ubuntu 14.04</p>
+<ol>
+<li><p>在Ubuntu 做BottonMapping<br> 修改檔案：/usr/share/X11/xorg.conf.d/50-vmmouse.conf<br> 因為會是唯讀 所以要用Terminal輸入：<code>sudo gedit</code>來編輯<br> 打開之後複製下面的內容取代原本的 (我用的是Kensington Expert Mouse)<br> 最後存檔重開機 完成!</p>
+<pre><code> Section <span class="string">"InputClass"</span>
+     Identifier  <span class="string">"Expert Mouse"</span>
+     MatchProduct    <span class="string">"Kensington      Kensington Expert Mouse"</span>
+     MatchIsPointer  <span class="string">"on"</span>
+     MatchDevicePath <span class="string">"/dev/input/event*"</span>
+     Driver      <span class="string">"evdev"</span>
+     <span class="keyword">Option</span>      <span class="string">"SendCoreEvents"</span> <span class="string">"true"</span>
+     <span class="comment">#physical butons come from the mouse as:</span>
+     <span class="comment">#   2 8</span>
+     <span class="comment">#   1 3</span>
+     <span class="comment">#This makes the top left and top right exchange</span>
+     <span class="comment">#</span>
+     <span class="keyword">Option</span> <span class="string">"ButtonMapping"</span>  <span class="string">"1 8 3 4 5 6 7 2"</span>
+ EndSection
+</code></pre></li>
+<li><p>地區支援不見</p>
+<pre><code> sudo apt-<span class="built_in">get</span> install gnome-<span class="keyword">language</span>-selector
+</code></pre></li>
+<li><p>輸入法有問題</p>
+<pre><code> killall ibus-daemon
+ <span class="built_in">sudo</span> apt-get install ibus-daemon
+</code></pre></li>
+<li><p>預設的HDMI輸出音效沒有聲音，Google一下就有解決辦法了</p>
+</li>
+</ol>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/個版轉錄/">個版轉錄</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/03/bbs_kakkoii/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          空色帥氣台詞
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/02/03/bbs_funny/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          趣事
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:fukami896.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 諾哥<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
