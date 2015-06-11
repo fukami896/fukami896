@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: 技術 | Daydream Dungeon</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="諾哥的HP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daydream Dungeon">
+<meta property="og:url" content="http://fukami896.github.io/tags/技術/index.html">
+<meta property="og:site_name" content="Daydream Dungeon">
+<meta property="og:description" content="諾哥的HP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daydream Dungeon">
+<meta name="twitter:description" content="諾哥的HP">
+  
+    <link rel="alternative" href="/atom.xml" title="Daydream Dungeon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://fukami896.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      
+  
+    <article id="post-hexotips" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/02/06/hexotips/" class="article-date">
+  <time datetime="2015-02-06T12:40:33.000Z" itemprop="datePublished">Feb 6 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">諾哥</span>
+		<div class="commentscount">
+			
+				<a href="http://fukami896.github.io/2015/02/06/hexotips/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/02/06/hexotips/">搭建Hexo過程中的注意事項</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h3 id="1-_按照官網寫的一步步安裝完成，重開terminal後執行hexo卻說command_not_found">1. 按照官網寫的一步步安裝完成，重開terminal後執行hexo卻說command not found</h3><p>Solution: 雖然不知道為什麼，不過似乎跟沒有指定nodejs的default版本有關，所以要在terminal中輸入以下指令確認nvm版本:</p>
+<pre><code>$ nvm ls</code></pre>
+接著再指定default的nvm版本:
+<pre><code>$ nvm alias default [nvm 版本號]</code></pre>
+
+<p>這樣就解決了<br>reference:<a href="http://yukiyamashina.github.io/blog/2014/09/19/blog-at-github-using-hexo/" target="_blank" rel="external">HexoでGitHubにブログをつくる</a></p>
+<hr>
+<h3 id="2-_幫Hexo加上RSS功能">2. 幫Hexo加上RSS功能</h3><p>Hexo有很多Plugin可以用，RSS feed就是其中一個<br>只要打幾個指令就能安裝了</p>
+<p>首先打開Terminal進到blog資料夾，輸入：</p>
+<p><pre><code>$ sudo npm install hexo-generator-feed —save</code></pre><br>然後打開_config.yml，在裡面加上：</p>
+<p><pre><code>#Feed Atom<br>feed:<br>    type: atom<br>    path: atom.xml<br>    limit: 20<br></code></pre><br>接著只要generate一次之後，就可以在blog資料夾下發現多了atom.xml，增加RSS feed完成！</p>
+<hr>
+<h3 id="3-_增加留言功能">3. 增加留言功能</h3><p>這個留言功能是使用<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>的服務來達成的，所以首先要到<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>申請一個帳號，並且在其中增加自己的網站網址</p>
+<p>接著打開_config.yml，找到<code>disqus_shortname</code>，填上自己的shortname就大功告成了(其實這裡我也不太懂，大概是填入帳號名吧，總之我是成功了XDD)<br>reference: <a href="http://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo-on-window/" target="_blank" rel="external">Hexo 安裝教學、心得筆記 (Windows)</a></p>
+<hr>
+<h3 id="4-_Push到Github時使用SSH，免輸入帳密">4. Push到Github時使用SSH，免輸入帳密</h3><p>因為我懶得每次更新blog時都要輸入一次帳密，所以想來研究一下有沒有比較方便的方法，剛好Github也能讓你使用SSH來Push，所以就來用用看，只是要先做些前置準備</p>
+<p>詳細步驟請先看Github官方教學<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">Generating SSH keys</a><br>按照步驟做完後，就可以在自己的Github repository頁面右方看到可複製的SSH連結，將他貼到_config.yml中的repository後，就可以用啦~</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技術/">技術</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+  
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:fukami896.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 諾哥<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+<script>
+  var disqus_shortname = 'fukami896';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

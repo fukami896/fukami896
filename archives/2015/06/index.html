@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Archives: 2015/6 | Daydream Dungeon</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="諾哥的HP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daydream Dungeon">
+<meta property="og:url" content="http://fukami896.github.io/archives/2015/06/index.html">
+<meta property="og:site_name" content="Daydream Dungeon">
+<meta property="og:description" content="諾哥的HP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daydream Dungeon">
+<meta name="twitter:description" content="諾哥的HP">
+  
+    <link rel="alternative" href="/atom.xml" title="Daydream Dungeon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://fukami896.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      
+  
+    <article id="post-clip-source-check" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/06/11/clip-source-check/" class="article-date">
+  <time datetime="2015-06-11T13:56:49.000Z" itemprop="datePublished">Jun 11 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">諾哥</span>
+		<div class="commentscount">
+			
+				<a href="http://fukami896.github.io/2015/06/11/clip-source-check/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/06/11/clip-source-check/">剪素材用Source考察</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>因為總是想要剪出來的片畫質能夠好，所以不外乎有幾個要注意的地方:</p>
+<ol>
+<li>素材檔的好壞</li>
+<li>剪好的片在Render出來時的設定</li>
+</ol>
+<p>本篇就是以第一點為主，做了個小小的測試。不過在開始前，先來說說本篇的動機，現今網路上的RAW檔，為了方便傳輸，有很多都用h.264作為影片的編碼，關於h.264的好處我就不在這裡提了，但是，h.264做為剪片的素材來源，除非利用avisynth把他掛入VirtualDub之類的影片裁切軟體內，不然h.264是相當不利於線性編輯的，除了處理速度慢之外，還有可能會造成軟體Crash，所以，對於有些不能用avisynth的人(ex. 我自己)來說，必定要用其他方式來預先處理(轉檔)，才能繼續接下來的作業。以下就以幾種不同的設定來轉檔，看看哪一個才符合我們的需求。</p>
+<p>首先，來源檔為[Leopard-Raws] Hibike! Euphonium - 01 RAW (KBS 1280x720 x264 AAC).mp4，在此將它改名為00.mp4方便輸入，再來會在命令提示字元中調用ffmepg來對00.mp4進行轉檔，出來的檔案結果如下圖所示:</p>
+<p><img src="http://i755.photobucket.com/albums/xx193/mikeou896/h264_convert01.jpg" alt="x264_convert01.jpg"></p>
+<p>可以看到畫面中的00.mp4原始大小大約為364MB，第1個檔案是用xvid預設轉好玩的，輸入的指令為:</p>
+<pre><code>ffmpeg -<span class="tag">i</span> <span class="number">00</span><span class="class">.mp4</span> -c:v libxvid -an <span class="number">01</span>_xvid.avi
+</code></pre><p>打開來看了一下，雖然轉檔速度挺快的，可是這畫質真是慘不忍睹，所以不會是我們要的編碼。再來，第2個檔案是無損壓縮avi，指令為:</p>
+<pre><code>ffmpeg -<span class="tag">i</span> <span class="number">00</span><span class="class">.mp4</span> -c:v huffyuv -an <span class="number">02</span>_huffyuv.avi
+</code></pre><p>可以看到檔案大小為20GB，大約是原檔的70倍大，轉檔速度普通，畫質當然是沒問題，可是這實在是有點太大了，我硬碟hold不住啊。再來，下一個檔案是用h.264來壓的。在這裡我要解說一下了，為什麼我要從h.264轉檔為h.264呢? 有差嗎? 答案是有的，差別在於壓縮的設定，通常看到那種明明是720p或是1080p，但是大小卻只有幾百MB的mp4檔肯定是不適合線性剪輯的，但是如果是壓縮率相對小多了的設定呢? 這或許是個選擇，所以輸入以下的指令來轉轉看:</p>
+<pre><code>ffmpeg -<span class="tag">i</span> <span class="number">00</span><span class="class">.mp4</span> -c:v libx264 -qp <span class="number">0</span> -an <span class="number">03</span>_x264.mp4
+</code></pre><p>轉出來的檔案相對無損壓縮avi小多了，只有2.5GB，轉檔時間快了許多，而且畫質還不錯，這似乎是個好選擇，但是其實x264有更快的preset，所以我們可以在第4個檔案來試試:</p>
+<pre><code>ffmpeg -<span class="tag">i</span> <span class="number">00</span><span class="class">.mp4</span> -c:v libx264 -qp <span class="number">0</span> -preset ultrafast <span class="number">04</span>_x264_ultrafast.mp4
+</code></pre><p>出來的檔案，很明顯比上一個大上了一圈，但是速度卻快得跟飛一樣，不愧是ultrafast。在x264中用<code>-qp 0</code>這方式轉出來的檔案，看來是不會有b-frame，所以應該能讓影片剪裁軟體處理得順暢得多。接下來我試了一下完全無壓縮的avi檔，指令為:</p>
+<pre><code>ffmpeg -<span class="tag">i</span> <span class="number">00</span><span class="class">.mp4</span> -c:v rawvideo -an <span class="number">05</span>_rawvideo.avi
+</code></pre><p>可以看到這檔案比第2個例子足足大上了兩陪之多，居然有46GB，轉檔時間爆炸久，但是CPU使用率卻低到不行，說明這個例子的速度瓶頸並不是在CPU效能上，而是RAM或是硬碟之類的地方。這麼大的檔案，光是要讀進剪輯軟體就是個問題了，所以也不實用。下一個例子是我純屬好奇，用這個超級大檔加上第4個例子的指令轉出來的，可以發現檔案大小居然和第4個例子一模一樣，這也可以說明在第4 個例子中，00.mp4解碼後的視訊流，如果直接存出來不壓成h.264，就會是第5個例子的rawvideo。</p>
+<p>結論: 經過了以上的比較，可以得知，在不能使用avisynth的情況下，使用x264的<code>-qp 0 -preset ultrafast</code>應該是比較符合時間和空間上的效益的。至於實際上能否讓軟體順利吃進去，這個就等我有空再試一下吧。</p>
+<p>reference: <a href="http://superuser.com/questions/347433/how-to-create-an-uncompressed-avi-from-a-series-of-1000s-of-png-images-using-ff" target="_blank" rel="external">How to create an uncompressed AVI from a series of 1000’s of PNG images using FFMPEG</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剪片/">剪片</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+  
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:fukami896.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 諾哥<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+<script>
+  var disqus_shortname = 'fukami896';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

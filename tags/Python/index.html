@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: Python | Daydream Dungeon</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="諾哥的HP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daydream Dungeon">
+<meta property="og:url" content="http://fukami896.github.io/tags/Python/index.html">
+<meta property="og:site_name" content="Daydream Dungeon">
+<meta property="og:description" content="諾哥的HP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daydream Dungeon">
+<meta name="twitter:description" content="諾哥的HP">
+  
+    <link rel="alternative" href="/atom.xml" title="Daydream Dungeon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://fukami896.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      
+  
+    <article id="post-install-pycharm" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/02/12/install-pycharm/" class="article-date">
+  <time datetime="2015-02-12T12:40:21.000Z" itemprop="datePublished">Feb 12 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">諾哥</span>
+		<div class="commentscount">
+			
+				<a href="http://fukami896.github.io/2015/02/12/install-pycharm/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/02/12/install-pycharm/">在Ubuntu上安裝PyCharm</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>最近剛開始學Python，看了<a href="http://www.swaroopch.com/notes/python/" target="_blank" rel="external">A Byte of Python</a>，寫得很簡單易懂，裡面推薦了PyCharm這套IDE，想想我也很久沒裝IDE這種東西了，一直都是用筆記本這種小程式，雖然乾淨，不過對於寫程式來說，還是不太方便，所以就在公司的電腦上裝了用用看。沒想到，還真的挺好用的，執行寫好的程式只要點一下就可以在下方看到結果，比起切換視窗打CLI快多了。所以回家就來裝個PyCharm在我的Ubuntu 14.04上，不過官方沒有提供<code>apt-get</code>整包安裝，所以從網路上找了其它方法，我想這大概是好心人提供的<code>.deb</code>檔吧。感謝大大w</p>
+<p>以下為安裝方法：</p>
+<pre><code>wget -q -<span class="constant">O </span>– <span class="symbol">http:</span>/<span class="regexp">/archive.getdeb.net/getdeb</span>-archive.key | sudo apt-key add –
+sudo sh -c ‘echo “deb <span class="symbol">http:</span>/<span class="regexp">/archive.getdeb.net/ubuntu</span> <span class="variable">$(</span>lsb_release -sc)-getdeb apps” &gt;&gt; <span class="regexp">/etc/apt</span><span class="regexp">/sources.list.d/getdeb</span>.list’
+sudo apt-get update
+sudo apt-get install pycharm
+</code></pre><p>就這簡單的四行，別忘了裝完後到Setting裡去調一下要用的Python Interpreter版本啊<br>之後再來寫一下不錯的學Python網站</p>
+<p>reference: <a href="http://www.thornstrom.net/how-to/linux/ubuntu-and-pycharm/" target="_blank" rel="external">Installing PyCharm 3.1 on Ubuntu 14.04</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyCharm/">PyCharm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+  
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:fukami896.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">Daydream Dungeon</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 諾哥<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+<script>
+  var disqus_shortname = 'fukami896';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>
