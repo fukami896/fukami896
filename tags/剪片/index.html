@@ -47,6 +47,64 @@
     <div id="main">
       
   
+    <article id="post-clip-source-check2" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/06/21/clip-source-check2/" class="article-date">
+  <time datetime="2015-06-21T12:50:57.000Z" itemprop="datePublished">Jun 21 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">諾哥</span>
+		<div class="commentscount">
+			
+				<a href="http://fukami896.github.io/2015/06/21/clip-source-check2/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/06/21/clip-source-check2/">剪素材用Source考察 - 2</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>繼上次的結果，我們知道用x264可以達到我們想要的檔案大小，但是，讓剪素材軟體吃進去好不好用這個還不知道。因此，我們就先用上次做出來的例子4丟給Avidemux吃，一丟進去，Avidemux就會跳出警示說<code>有b-frame會造成Crash</code>，但是我們的檔案裡並沒有b-frame，所以不用擔心，按下確定開始編輯吧。</p>
+<p>實際上截了幾個片段會發現，為什麼好用的場景切換沒有用呢? 沒有這個的話，裁起來好麻煩啊，會不會是檔案的問題呢? 回去查x264的ultrafast preset的設定後，會發現他有幾個跟場景切換息息相關的參數被改掉了，主要是<code>keyint</code>和<code>secencut</code>這2個參數，因此，我們要在套用了ultrafast之後，再把這兩個參數改回我們要的數值，而這數值該設多少咧? 只要用平常的的預設值就好了，<code>keyint</code>設為250，而<code>scenecut</code>設為40，也就是說，我們的指令會是以下這樣:</p>
+<pre><code>ffmpeg -<span class="tag">i</span> <span class="number">00</span><span class="class">.mp4</span> -c:v libx264 -qp <span class="number">0</span> -preset ultrafast -x264opts keyint=<span class="number">250</span>:scenecut=<span class="number">40</span> <span class="number">07</span>.mp4
+</code></pre><p>把輸出的檔案再丟進Avidemux/VirtualDub試試看，就會發現場景切換又能用囉!</p>
+<p>Reference: <a href="https://trac.ffmpeg.org/wiki/Encode/H.264" target="_blank" rel="external">Encode/H.264</a></p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>.</p>
+</blockquote>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剪片/">剪片</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
     <article id="post-clip-source-check" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
